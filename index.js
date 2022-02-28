@@ -1,42 +1,116 @@
-let add = function(){
-  let sum = 0;
-  for(i=0;i<arguments.length;i++){
-      sum = sum + arguments[i];}
-      return sum;
+//Initialize arrays
+let ids = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "zero", "eqs", "sub", "add", "div", "mul"];
+let args = [];
+
+//Define operation functions
+
+let add = function () {
+    let sum = 0;
+    for (let i = 0; i < arguments.length; i++) {
+        console.log(typeof (arguments[i]));
+        sum = sum + arguments[i];
+    }
+    return sum;
 }
-let subtract = function(){
+let subtract = function () {
     let init = arguments[0];
-    for(i=1;i<arguments.length;i++){
-        init = init - arguments[i];
+    for (let m = 1; m < arguments.length; m++) {
+        init = init - arguments[m];
     }
     return init;
 }
-let multiply = function(){
+let multiply = function () {
     let product = 1;
-    for(i=0;i<arguments.length;i++){
-        product = product*arguments[i];
+    for (let j = 0; j < arguments.length; j++) {
+        product = product * arguments[j];
     }
     return product;
 }
-let divide = function(){
+let divide = function () {
     let quotient = arguments[0];
-    for(i=1;i<arguments.length;i++){
-        quotient = quotient/arguments[i];
+    for (let f = 1; f < arguments.length; f++) {
+        quotient = quotient / arguments[f];
     }
     return quotient;
 }
-// let operator = function(a,b,c){
-//     if(b =`${+}`){
-//         console.log(add(a,c));
-//     }
-//     if(b ="-"){
-//         console.log(subtract(a,c));
-//     }
-//     if(b ="/"){
-//         console.log(multiply(a,c));
-//     }
-//     if(b ="*"){
-//         console.log(divide(a,c));
-//     }
-// }
-// console.log(operator(8+2));
+document.getElementById("answer").style.gridArea = '1/1/1/5';
+document.getElementById("answer").style.background="rgb(255, 228, 196)";
+document.getElementById("answer").innerHTML = "0";
+//Function for calling operations on large strings of numbers
+
+let calculate = function () {
+    for (let j = 0; j < 15; j++) {
+        document.getElementById(ids[j]).addEventListener("click", () => {
+            let final = 0;
+
+            args.push(document.getElementById(ids[j]));
+            for (let k = 0; k < args.length; k = k + 1) {
+                if (args[k].id == "add"&&k===1) {
+                    final = final + (parseInt(document.getElementById(args[k - 1].id).innerHTML)+parseInt(document.getElementById(args[k + 1].id).innerHTML));
+                    document.getElementById("answer").innerHTML = final;
+                }
+                else if (args[k].id == "add") {
+                    final = final+parseInt(document.getElementById(args[k + 1].id).innerHTML);
+                    document.getElementById("answer").innerHTML = final;
+                }
+                else if (args[k].id == "sub"&&k===1) {
+                    final = parseInt(document.getElementById(args[k - 1].id).innerHTML);
+                    final = final -parseInt(document.getElementById(args[k + 1].id).innerHTML);
+                    document.getElementById("answer").innerHTML = final;
+                }
+                else if (args[k].id == "sub") {
+                    final = final -parseInt(document.getElementById(args[k + 1].id).innerHTML);
+                    document.getElementById("answer").innerHTML = final;
+                }
+                else if (args[k].id == "div"&&k===1) {
+                    final = final/(parseInt(document.getElementById(args[k - 1].id).innerHTML)/parseInt(document.getElementById(args[k + 1].id).innerHTML));
+                    document.getElementById("answer").innerHTML = final;
+                }
+                else if (args[k].id == "div") {
+                    final = final/parseInt(document.getElementById(args[k + 1].id).innerHTML);
+                    document.getElementById("answer").innerHTML = final;
+                }
+                else if (args[k].id == "mul"&&k===1) {
+                    final = final*(parseInt(document.getElementById(args[k - 1].id).innerHTML)*parseInt(document.getElementById(args[k + 1].id).innerHTML));
+                    document.getElementById("answer").innerHTML = final;
+                }
+                else if (args[k].id == "mul") {
+                    final = final*parseInt(document.getElementById(args[k + 1].id).innerHTML);
+                    document.getElementById("answer").innerHTML = final;
+                }
+                else if (args[k].id == "eqs") {
+                    document.getElementById("answer").innerHTML = final;
+                }
+                // switch (args[k].id) {
+                //     case "add":
+                //         // code block
+                //         final = final + (parseInt(document.getElementById(args[k - 1].id).innerHTML) + parseInt(document.getElementById(args[k + 1].id).innerHTML));
+                //         console.log(final);
+                //         break;
+                //     case "sub":
+                //         // code block
+                //         final = final - (parseInt(document.getElementById(args[k - 1].id).innerHTML) - parseInt(document.getElementById(args[k + 1].id).innerHTML));
+                //         console.log(final);
+                //         break;
+                //     case "mul":
+                //         // code block
+                //         final = final * (parseInt(document.getElementById(args[k - 1].id).innerHTML) * parseInt(document.getElementById(args[k + 1].id).innerHTML));
+                //         console.log(final);
+                //         break;
+                //     case "div":
+                //         // code block
+                //         final = final / (parseInt(document.getElementById(args[k - 1].id).innerHTML) / parseInt(document.getElementById(args[k + 1].id).innerHTML));
+                //         console.log(final);
+                //         break;
+                //     default:
+                //         // code block
+                //         console.log("def");
+                }
+            }
+        )}
+
+    }
+
+
+
+calculate();
