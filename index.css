@@ -2,7 +2,13 @@
     display: grid;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: repeat(5, 100px);
+    grid-gap: 2px;
     margin-left: 520px;
+    margin-top: 100px;
+}
+button{
+    color:white;
+    background-color: rgb(97, 92, 92);
 }
 .one{
     grid-area: 2/1/2/1;
@@ -51,6 +57,9 @@
     grid-area: 5/3/5/3;
 }
 .answer{
-    grid-area: 1/1/1/5;
-    background-color: rgb(255, 228, 196);
+    z-index:-1;
+}
+.display{
+    z-index:1;
+    color: rgb(94, 126, 76);
 }

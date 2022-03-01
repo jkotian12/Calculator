@@ -34,8 +34,14 @@ let divide = function () {
     return quotient;
 }
 document.getElementById("answer").style.gridArea = '1/1/1/5';
-document.getElementById("answer").style.background="rgb(255, 228, 196)";
-document.getElementById("answer").innerHTML = "0";
+document.getElementById("display").style.backgroundColor="rgb(94, 126, 76)";
+document.getElementById("answer").style.backgroundColor = 'rgb(97, 92, 92)';
+document.getElementById("display").style.height= "80px"
+document.getElementById("display").style.width= "350px"
+document.getElementById("display").style.marginLeft= "25px"
+document.getElementById("display").style.marginTop= "10px"
+document.getElementById("display").innerHTML = "0";
+
 //Function for calling operations on large strings of numbers
 
 let calculate = function () {
@@ -47,39 +53,39 @@ let calculate = function () {
             for (let k = 0; k < args.length; k = k + 1) {
                 if (args[k].id == "add"&&k===1) {
                     final = final + (parseInt(document.getElementById(args[k - 1].id).innerHTML)+parseInt(document.getElementById(args[k + 1].id).innerHTML));
-                    document.getElementById("answer").innerHTML = final;
+                    document.getElementById("display").innerHTML = final;
                 }
                 else if (args[k].id == "add") {
                     final = final+parseInt(document.getElementById(args[k + 1].id).innerHTML);
-                    document.getElementById("answer").innerHTML = final;
+                    document.getElementById("display").innerHTML = final;
                 }
                 else if (args[k].id == "sub"&&k===1) {
                     final = parseInt(document.getElementById(args[k - 1].id).innerHTML);
                     final = final -parseInt(document.getElementById(args[k + 1].id).innerHTML);
-                    document.getElementById("answer").innerHTML = final;
+                    document.getElementById("display").innerHTML = final;
                 }
                 else if (args[k].id == "sub") {
                     final = final -parseInt(document.getElementById(args[k + 1].id).innerHTML);
-                    document.getElementById("answer").innerHTML = final;
+                    document.getElementById("display").innerHTML = final;
                 }
                 else if (args[k].id == "div"&&k===1) {
                     final = final/(parseInt(document.getElementById(args[k - 1].id).innerHTML)/parseInt(document.getElementById(args[k + 1].id).innerHTML));
-                    document.getElementById("answer").innerHTML = final;
+                    document.getElementById("display").innerHTML = final;
                 }
                 else if (args[k].id == "div") {
                     final = final/parseInt(document.getElementById(args[k + 1].id).innerHTML);
-                    document.getElementById("answer").innerHTML = final;
+                    document.getElementById("display").innerHTML = final;
                 }
                 else if (args[k].id == "mul"&&k===1) {
                     final = final*(parseInt(document.getElementById(args[k - 1].id).innerHTML)*parseInt(document.getElementById(args[k + 1].id).innerHTML));
-                    document.getElementById("answer").innerHTML = final;
+                    document.getElementById("display").innerHTML = final;
                 }
                 else if (args[k].id == "mul") {
                     final = final*parseInt(document.getElementById(args[k + 1].id).innerHTML);
-                    document.getElementById("answer").innerHTML = final;
+                    document.getElementById("display").innerHTML = final;
                 }
                 else if (args[k].id == "eqs") {
-                    document.getElementById("answer").innerHTML = final;
+                    document.getElementById("display").innerHTML = final;
                 }
                 // switch (args[k].id) {
                 //     case "add":
